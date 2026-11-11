@@ -22,7 +22,7 @@
 <p class="meta">Beatpocket — 身の回りの音を録るだけで、ビートが作れるパッド型サンプラー。</p>
 
 <div class="contact">
-  <p style="margin:0">ご質問・不具合のご報告は、<a href="#contact">問い合わせフォーム</a>からお送りください。</p>
+  <p style="margin:0">ご質問・不具合のご報告は、<a href="https://ideo-e.com/contact?app=beatpocket">お問い合わせフォーム</a>からお送りください。</p>
 </div>
 
 <h2>よくある質問</h2>
@@ -88,7 +88,7 @@
 <p class="meta">Beatpocket — record the sounds around you and play them on 16 pads.</p>
 
 <div class="contact">
-  <p style="margin:0">Questions or bug reports? Use the <a href="#contact">contact form</a>.</p>
+  <p style="margin:0">Questions or bug reports? Use the <a href="https://ideo-e.com/contact?app=beatpocket">contact form</a>.</p>
 </div>
 
 <h2>FAQ</h2>
@@ -148,21 +148,15 @@
 
 <hr>
 
-<!-- ====================== Contact form ====================== -->
+<!-- ====================== Contact ====================== -->
 <section id="contact">
 <h1>お問い合わせ <span class="meta" style="font-size:18px">/ Contact</span></h1>
-<p class="meta">数日以内に、入力いただいたメールアドレスへお返事します。<br>We usually reply within a few days to the email address you enter.</p>
-<form id="contact-form" class="form">
-  <label>お名前 / Name<input type="text" name="name" autocomplete="name"></label>
-  <label><span>メールアドレス / Email <span class="req">*</span></span><input type="email" name="email" autocomplete="email" required></label>
-  <label>iPhone の機種・iOS のバージョン / iPhone model &amp; iOS version<input type="text" name="device" placeholder="iPhone 16 / iOS 26.1"></label>
-  <label><span>お問い合わせ内容 / Message <span class="req">*</span></span><textarea name="message" rows="6" required placeholder="どの画面で何が起きたか / What happened, on which screen"></textarea></label>
-  <input type="hidden" name="_subject" value="Beatpocket サポート / support">
-  <input type="hidden" name="_template" value="table">
-  <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-  <button type="submit">送信する / Send</button>
-  <p id="form-status" class="status" role="status"></p>
-</form>
+<p>ご質問・不具合のご報告は、IDEO ENTERTAINMENT INC. のお問い合わせフォームからお送りください。数日以内に、入力いただいたメールアドレスへお返事します。</p>
+<p>Questions or bug reports? Please use the IDEO ENTERTAINMENT INC. contact form. We usually reply within a few days to the email address you enter.</p>
+<div class="contact">
+  <p style="margin:0"><a href="https://ideo-e.com/contact?app=beatpocket">お問い合わせフォームを開く / Open the contact form</a></p>
+</div>
+<p class="meta">iPhone の機種・iOS のバージョンと、どの画面で何が起きたかを書いていただけると、早くお答えできます。<br>Including your iPhone model, iOS version and what happened on which screen helps us answer faster.</p>
 </section>
 
 <footer>
@@ -170,41 +164,5 @@
   <p>© 2026 IDEO ENTERTAINMENT INC.</p>
 </footer>
 </div>
-<script>
-// Sent through FormSubmit (same service as the company site). To hide the address from the page
-// source too, replace it with the random ID FormSubmit emails after the first message.
-var FORM_ENDPOINT = 'https://formsubmit.co/ajax/sato-s@ideo-e.com';
-(function () {
-  var form = document.getElementById('contact-form');
-  var status = document.getElementById('form-status');
-  var button = form.querySelector('button');
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (form.querySelector('.hp').value) return; // bot
-    button.disabled = true;
-    status.className = 'status';
-    status.textContent = '送信中… / Sending…';
-    var data = {};
-    new FormData(form).forEach(function (v, k) { data[k] = v; });
-    fetch(FORM_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(data)
-    })
-      .then(function (r) { return r.json(); })
-      .then(function (j) {
-        if (j.success === false || j.success === 'false') throw new Error(j.message || 'failed');
-        status.className = 'status ok';
-        status.textContent = '送信しました。お返事をお待ちください。/ Sent — we\'ll get back to you soon.';
-        form.reset();
-      })
-      .catch(function () {
-        status.className = 'status err';
-        status.textContent = '送信できませんでした。時間をおいてもう一度お試しください。/ Couldn\'t send. Please try again later.';
-      })
-      .finally(function () { button.disabled = false; });
-  });
-})();
-</script>
 </body>
 </html>
